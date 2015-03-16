@@ -27,8 +27,9 @@
 			return $instance;
 		}
 
-		public static function initWithData($label) {
-			$instance = new self();
+		public static function initWithData($id, $label) {
+            $instance = new self();
+            $instance->setId($id);
 			$instance->setLabel($label);
 			return $instance;
 		}
@@ -37,7 +38,8 @@
 			if (!empty($this->label)) {
 				$dbh = SPDO::getInstance();
 				$stmt = $dbh->prepare("INSERT INTO language 
-										VALUES (null, :label);");
+                                        VALUES (:id, :label);");
+                $stmt->bindParam(":id", $this->id, PDO::PARAM_STR);
 				$stmt->bindParam(":label", $this->label, PDO::PARAM_STR);
 				$stmt->execute();
 				$this->id = $dbh->lastInsertId();
@@ -63,7 +65,7 @@
 			$stmt->closeCursor();
 			$languages = array();
 			foreach ($rows as $row) {
-				$languages[] = Language::initWithId($row);
+				$languages[] = Language::initWithId($row['id']);
 			}
 			return $languages;
 		}
@@ -91,11 +93,11 @@
 		 * Setters
 		 */
 
-		public setId($id) {
+		public function setId($id) {
 			$this->id = $id;
 		}
 
-		public setLabel($label) {
+		public function setLabel($label) {
 			$this->label = $label;
 		}
 	}
