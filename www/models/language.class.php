@@ -5,11 +5,11 @@
 	 * @copyright Net-Production
 	 */
 
+	$dbh = SPDO::getInstance();
+
 	class Language {
 		private $id;
 		private $label;
-
-		$dbh = SPDO::getInstance();
 
 		function __construct(){
 			$this->id = "";
