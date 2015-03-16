@@ -5,8 +5,6 @@
 	 * @copyright Net-Production
 	 */
 
-	$dbh = SPDO::getInstance();
-
 	class Language {
 		private $id;
 		private $label;
@@ -19,6 +17,7 @@
 		public static function initWithId($id) {
 			$instance = new self();
 			$instance->setId($id);
+			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("SELECT * FROM language WHERE id = :id;");
 			$stmt->bindParam(":id", $id, PDO::PARAM_STR);
 			$stmt->execute();
@@ -36,6 +35,7 @@
 
 		public function store() {
 			if (!empty($this->label)) {
+				$dbh = SPDO::getInstance();
 				$stmt = $dbh->prepare("INSERT INTO language 
 										VALUES (null, :label);");
 				$stmt->bindParam(":label", $this->label, PDO::PARAM_STR);
@@ -48,6 +48,7 @@
 		}
 
 		public function delete() {
+			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("DELETE FROM language WHERE id = :id;");
 			$stmt->bindParam(":id", $this->id, PDO::PARAM_STR);
 			$stmt->execute();
@@ -55,18 +56,20 @@
 		}
 
 		public static function getAll() {
+			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("SELECT id FROM language;");
 			$stmt->execute();
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$stmt->closeCursor();
 			$languages = array();
 			foreach ($rows as $row) {
-				$languages[] = initWithId($row);
+				$languages[] = Language::initWithId($row);
 			}
 			return $languages;
 		}
 
 		public static function deleteAll() {
+			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("DELETE FROM language;");
 			$stmt->execute();
 			$stmt->closeCursor();
