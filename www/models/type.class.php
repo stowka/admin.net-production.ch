@@ -36,18 +36,19 @@
 
 		public function store() {
 			if (!empty($this->label)) {
-				$stmt = $dbh->prepare("INSERT INTO type VALUES (null, :label);");
+				$stmt = $dbh->prepare("INSERT INTO type 
+										VALUES (null, :label);");
 				$stmt->bindParam(":label", $this->label, PDO::PARAM_STR);
 				$stmt->execute();
 				$this->id = $dbh->lastInsertId();
 				$stmt->closeCursor();
 			}
 			else
-				echo "Erreur : label non valide.";
+				echo "Error : Incorrect label.";
 		}
 
 		public function delete() {
-			$stmt = $dbh->prepare("DELETE FROM type WHERE id = :id");
+			$stmt = $dbh->prepare("DELETE FROM type WHERE id = :id;");
 			$stmt->bindParam(":id", $this->id, PDO::PARAM_INT);
 			$stmt->execute();
 			$stmt->closeCursor();

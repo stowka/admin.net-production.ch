@@ -20,7 +20,7 @@
 			$instance = new self();
 			$instance->setId($id);
 			$stmt = $dbh->prepare("SELECT * FROM language WHERE id = :id;");
-			$stmt->bindParam(":id", $id, PDO::PARAM_STR)
+			$stmt->bindParam(":id", $id, PDO::PARAM_STR);
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			$stmt->closeCursor();
@@ -36,18 +36,19 @@
 
 		public function store() {
 			if (!empty($this->label)) {
-				$stmt = $dbh->prepare("INSERT INTO language VALUES (null, :label);");
+				$stmt = $dbh->prepare("INSERT INTO language 
+										VALUES (null, :label);");
 				$stmt->bindParam(":label", $this->label, PDO::PARAM_STR);
 				$stmt->execute();
 				$this->id = $dbh->lastInsertId();
 				$stmt->closeCursor();
 			}
 			else
-				echo "Erreur : label non valide.";
+				echo "Error : Incorrect label.";
 		}
 
 		public function delete() {
-			$stmt = $dbh->prepare("DELETE FROM language WHERE id = :id");
+			$stmt = $dbh->prepare("DELETE FROM language WHERE id = :id;");
 			$stmt->bindParam(":id", $this->id, PDO::PARAM_STR);
 			$stmt->execute();
 			$stmt->closeCursor();
