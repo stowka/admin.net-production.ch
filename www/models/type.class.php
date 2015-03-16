@@ -30,7 +30,7 @@
 
 		public static function initWithData($label) {
 			$instance = new self();
-			$this->setLabel($label);
+			$instance->setLabel($label);
 			return $instance;
 		}
 
