@@ -19,7 +19,7 @@
 			$instance->setId($id);
 			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("SELECT * FROM type WHERE id = :id;");
-			$stmt->bindParam(":id", $id, PDO::PARAM_INT)
+			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			$stmt->closeCursor();
@@ -63,7 +63,7 @@
 			$stmt->closeCursor();
 			$types = array();
 			foreach ($rows as $row) {
-				$types[] = Type::initWithId($row);
+				$types[] = Type::initWithId($row['id']);
 			}
 			return $types;
 		}
@@ -91,11 +91,11 @@
 		 * Setters
 		 */
 
-		public setId($id) {
+		public function setId($id) {
 			$this->id = $id;
 		}
 
-		public setLabel($label) {
+		public function setLabel($label) {
 			$this->label = $label;
 		}
 	}
