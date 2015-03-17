@@ -11,31 +11,12 @@
 	session_save_path();
 	session_start();
 
-	/* Uncomment to activate mobile redirection *
-	# Mobile version redirection
-	$ua = $_SERVER['HTTP_USER_AGENT'];
-	if (preg_match('/iphone/i', $ua) 
-	|| preg_match('/android/i', $ua) 
-	|| preg_match('/blackberry/i', $ua) 
-	|| preg_match('/symb/i', $ua) 
-	|| preg_match('/ipad/i', $ua) 
-	|| preg_match('/ipod/i', $ua) 
-	|| preg_match('/phone/i', $ua)):
-		if (!isset($_GET['redirect']) || $_GET['redirect'] === true):
-			header('Location: ' . 'to be set'); # TO BE SET
-		endif;
-	elseif (isset($_GET['redirect'])):
-		$_SESSION['redirect'] = true;
-	endif;/**/
-
-	/* Uncomment to activate database usage *
 	# Database
 	require_once 'lib/spdo.class.php';
-	$dbh = SPDO::getInstance();/**/
+	$dbh = SPDO::getInstance();
 
-	/* Uncomment to activate mail library *
 	# PHPMailer
-	require_once 'lib/phpmailer.class.php';/**/
+	require_once 'lib/phpmailer.class.php';
 
 	# Models
 	function __autoload($model) {
@@ -58,8 +39,6 @@
 	else:
 		$lang = DEFAULT_LANGUAGE;
 	endif;
-
-	includeLanguage($lang);
 
 	# Set page
 	if (isset($_GET['page'])

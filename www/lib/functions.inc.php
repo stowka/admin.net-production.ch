@@ -48,21 +48,10 @@
 		return preg_replace("/[\n]/", "<br>", $paragraphs);
 	}
 
-	# Display language
-	function displayLanguage() {
-		echo $lang;
-	}
-
 	# Display author
 	function displayAuthor() {
 		echo '<!-- Designed by ' . DEFAULT_AUTHOR 
 			. ' (' . DEFAULT_COMPANY . ') -->';
-	}
-
-	# Inclusion functions
-	function includeLanguage($lang) {
-		require_once DEFAULT_LANG_PATH . 
-			$lang . DEFAULT_INC_EXTENSION;
 	}
 
 	function includeSection($section) {

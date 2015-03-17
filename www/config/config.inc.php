@@ -2,28 +2,22 @@
 	/**
 	 * Default configuration file
 	 * @author Antoine De Gieter
+	 * @copyright Net Production Köbe & Co
 	 */
 
 	# Constants
-	define('DEFAULT_LANGUAGE', 'to be set'); # TO BE SET
-	define('DEFAULT_TITLE', 'to be set'); # TO BE SET
+	define('DEFAULT_LANGUAGE', 'en_UK');
+	define('DEFAULT_TITLE', 'Admin • Net Production K&ouml;be &amp; Co');
 
 	define('DEFAULT_ADMIN_EMAIL', 'antoine.degieter@net-production.ch');
 	define('DEFAULT_AUTHOR', 'Antoine De Gieter');
 	define('DEFAULT_COMPANY', 'Net production K&ouml;be &amp; Co');
-	define('DEFAULT_CONTACT_EMAIL', 'to be set'); # TO BE SET
+	define('DEFAULT_CONTACT_EMAIL', 'contact@net-production.ch');
 
 	define('DEFAULT_404_MESSAGE', 'URL not found!');
-	
-	/* Uncomment to use the database *
-	define('DEFAULT_MYSQL_HOST', 'to be set');
-	define('DEFAULT_MYSQL_USER', 'to be set');
-	define('DEFAULT_MYSQL_PASSWORD', 'to be set');
-	define('DEFAULT_MYSQL_DATABASE', 'to be set');/**/
 
 	define('DEFAULT_LIB_PATH', '/lib');
-	define('DEFAULT_SESSION_PATH', '/tmp/to be set'); # TO BE SET
-	define('DEFAULT_LANG_PATH', '../lang/');
+	#define('DEFAULT_SESSION_PATH', '/tmp/to be set'); # TO BE SET
 	define('DEFAULT_MODEL_PATH', 'models/');
 	define('DEFAULT_CONTROLLER_PATH', 'controllers/');
 	define('DEFAULT_VIEW_PATH', 'views/');
@@ -42,13 +36,15 @@
 
 	# Languages
 	$authorized_languages = array(
-		'en',
-		'fr',
-		/* add more languages here */
+		'en_UK',
 	);
 
 	# Pages
 	$authorized_pages = array(
 		'home',
-		/* add more pages here */
+		'stats',
+		'projects',
+		'commitments',
+		'team',
+		'contact'
 	);
