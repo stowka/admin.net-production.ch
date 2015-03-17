@@ -57,7 +57,7 @@
 				</div>
 
 				<?php foreach ($commitments as $lang) { ?>
-				<form id="form-<?php echo $lang[0]->getLanguage()->getId();?>">
+				<form id="form-<?php echo $lang[0]->getLanguage()->getId();?>" method="POST" action="./">
 					<div class="row" id="<?php echo $lang[0]->getLanguage()->getId();?>">
 					<?php foreach ($lang as $commitment) { ?>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -70,6 +70,8 @@
 						</div>
 					<?php }	?>
 					</div>
+					<hr>
+					<button type="submit" class="btn btn-info text-center">Save</button>
 				</form>
 				<?php }	?>
 			</div>
