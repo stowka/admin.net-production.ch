@@ -21,7 +21,7 @@
 	# Models
 	function __autoload($model) {
 		if (file_exists(DEFAULT_MODEL_PATH . strtolower($model) . DEFAULT_MODEL_EXTENSION))
-			includeModel($model);
+			includeModel(strtolower($model));
 		else
 			throw new Exception("Unable to load $model.");
 	}
