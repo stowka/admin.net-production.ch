@@ -11,9 +11,9 @@
 	class SPDO {
 		private $_PDOInstance = null;
 		const DEFAULT_SQL_HOST = 'localhost';
-		const DEFAULT_SQL_USER = '';
+		const DEFAULT_SQL_USER = 'root';
 		const DEFAULT_SQL_PASSWORD = '';
-		const DEFAULT_SQL_DATABASE = '';
+		const DEFAULT_SQL_DATABASE = 'netprod';
 
 		private static $_instance = null;
 
