@@ -78,6 +78,20 @@
             $stmt->closeCursor();
         }
 
+        public static function getAllByTypeAndLanguage($typeId, $language) {
+            $dbh = SPDO::getInstance();
+            $stmt = $dbh->prepare("SELECT id FROM project WHERE type = :type and language = :language;");
+            $stmt->bindParam(":type", $typeId , PDO::PARAM_INT);
+            $stmt->bindParam(":language", $language, PDO::PARAM_STR);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
+            $projects = Array();
+            foreach ($rows as $row)
+                $projects[] = Project::initWithId($row['id']);
+            return $projects;
+        }
+
         public static function getAll() {
             $dbh = SPDO::getInstance();
             $stmt = $dbh->prepare("SELECT id FROM project;");

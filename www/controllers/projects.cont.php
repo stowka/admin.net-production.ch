@@ -4,4 +4,14 @@
 	 * @author Antoine De Gieter
 	 */
 	displayAuthor();
-	includeView('projects');
+
+    $types = Type::getAll();
+
+    $projects = [];
+
+    foreach($types as $item) {
+        $tmp = Project::getAllByTypeAndLanguage($item->getId(), "fr_CH");
+        $projects[$item->getId()] = $tmp;
+    }
+
+	require_once "views/projects.view.php";

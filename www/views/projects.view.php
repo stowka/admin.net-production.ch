@@ -14,18 +14,57 @@
 			<?php includeSection('sidebar'); ?>
 
 			<div id="page-content-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h1>
-								Projects
-							</h1>
-							<p>
-								Start here...
-							</p>
-						</div>
-					</div>
-				</div>
+                <h1>
+                    Projects
+                </h1>
+
+                <br />
+                <button title="Add new project" type="button" class="btn
+                    btn-primary">&plus;</button>
+                <br />    
+
+                <?php foreach ($types as $item):?>
+        
+               <div class="table-responsive">
+                    <table class="table">
+                        <colgroup>
+                            <col width="20%"/>
+                            <col width="50%"/>
+                            <col width="20%"/>
+                            <col width="10%"/>
+                        </colgroup>
+
+                        <caption><?=$item->getLabel()?></caption>
+                        
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Public ?</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php foreach($projects[$item->getId()] as $project):?>
+                            <tr>
+                                <td><?=$project->getTitle()?></td>
+                                <td><?=$project->getDescription()?></td>
+                                <?php if($project->isPublic()):?>
+                                    <td><input type="checkbox" checked/></td>
+                                <?php else: ?>
+                                    <td><input type="checkbox"/></td>
+                                <?php endif ?>
+                                <td><button class="btn btn-danger" type="button">&times;</button></td>
+                            </tr>
+                        <?php endforeach;?>
+                        </tbody>
+                    
+                    </table>
+                </div>
+
+                <?php endforeach;?>                
+
 			</div>
 		</div>
 	</body>
