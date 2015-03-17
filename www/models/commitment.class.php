@@ -22,7 +22,7 @@
 			$instance = new self();
 			$instance->setId($id);
 			$dbh = SPDO::getInstance();
-			$stmt = $dbh->prepare("SELECT * FROM commitment WHERE id == :id;");
+			$stmt = $dbh->prepare("SELECT * FROM commitment WHERE id = :id;");
 			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -93,7 +93,7 @@
 			return $this->id;
 		}
 
-		function getTitle() {
+		public function getTitle() {
 			return $this->title;
 		}
 

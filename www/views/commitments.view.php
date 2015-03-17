@@ -14,16 +14,44 @@
 			<?php includeSection('sidebar'); ?>
 
 			<div id="page-content-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h1>
-								Commitments
-							</h1>
-							<p>
-								Start here...
-							</p>
-						</div>
+				<h1>
+					Commitments
+				</h1>
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						<h2 class="text-center">
+							<img src="global/img/icons/lightbulb.png" alt="Oops" width="46px"><br><br>
+						<?php
+							echo $commitments[0]->getTitle();
+						?>
+						</h2>
+					</div>
+
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						<h2 class="text-center">
+							<img src="global/img/icons/tools.png" alt="Oops" width="46px"><br><br>
+						<?php
+							echo $commitments[1]->getTitle();
+						?>
+						</h2>
+					</div>
+
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						<h2 class="text-center">
+							<img src="global/img/icons/umbrella.png" alt="Oops" width="46px"><br><br>
+						<?php
+							echo $commitments[2]->getTitle();
+						?>
+						</h2>
+					</div>
+
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						<h2 class="text-center">
+							<img src="global/img/icons/lightning.png" alt="Oops" width="46px"><br><br>
+						<?php
+							echo $commitments[3]->getTitle();
+						?>
+						</h2>
 					</div>
 				</div>
 			</div>
