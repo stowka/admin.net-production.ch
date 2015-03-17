@@ -4,5 +4,6 @@
 	 * @author Antoine De Gieter
 	 */
 	displayAuthor();
-	$commitments = Commitment::getAll();
+	$commitments_fr = Commitment::getAll("fr_CH");
+	$commitments_en = Commitment::getAll();
 	require_once "views/commitments.view.php";

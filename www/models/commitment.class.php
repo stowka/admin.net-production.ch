@@ -66,9 +66,10 @@
 			$stmt->closeCursor();
 		}
 
-		public static function getAll() {
+		public static function getAll($lang = "en_UK") {
 			$dbh = SPDO::getInstance();
-			$stmt = $dbh->prepare("SELECT id FROM commitment;");
+			$stmt = $dbh->prepare("SELECT id FROM commitment WHERE language = :lang;");
+			$stmt->bindParam(":lang", $lang, PDO::PARAM_STR);
 			$stmt->execute();
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$stmt->closeCursor();
