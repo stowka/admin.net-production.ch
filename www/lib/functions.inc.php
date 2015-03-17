@@ -69,7 +69,7 @@
 			$controller . DEFAULT_CONTROLLER_EXTENSION;
 	}
 
-	function includeView($view) {
+    function includeView($view) {
 		require_once DEFAULT_VIEW_PATH . 
 			$view . DEFAULT_VIEW_EXTENSION;
 	}
