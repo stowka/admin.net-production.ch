@@ -2,3 +2,7 @@ body {
 	/*background-image: url(../img/backgrounds/light.jpg);/**/
 	background-size: cover;
 }
+
+textarea {
+	resize: none;
+}
