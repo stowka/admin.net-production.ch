@@ -20,13 +20,40 @@
 							<h1>
 								Team
 							</h1>
-							<p>
-								Start here...
-							</p>
+							<ul class="nav nav-tabs">
+								<li role="presentation" class="active" id="link-fr_CH">
+									<a href="#">
+										Français
+									</a>
+								</li>
+
+								<li role="presentation" id="link-en_UK">
+									<a href="#">
+										English
+									</a>
+								</li>
+							</ul>
+							<?php foreach ($team as $lang) { ?>
+							<form id="form-<?php echo $lang[0]->getLanguage()->getId();?>" method="POST" action="./">
+								<div class="row" id="<?php echo $lang[0]->getLanguage()->getId();?>">
+									<?php foreach ($lang as $member) { ?>
+										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+											<h2 class="text-center">
+												<?php echo utf8_encode($member->getName());?>
+											</h2>
+											<textarea rows="6" name="description" class="form-control"><?php echo utf8_encode($member->getBiography());?></textarea>
+										</div>
+									<?php } ?>
+								</div>
+								<hr>
+								<button type="submit" class="btn btn-info text-center">Save</button>
+							</form>
+						<?php }	?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<?php includeSection('commitments-js');?>
 	</body>
 </html>
