@@ -20,7 +20,7 @@
 			$instance = new self();
 			$instance->setId($id);
 			$dbh = SPDO::getInstance();
-			$stmt = $dbh->prepare("SELECT * FROM reason WHERE id == :id;");
+			$stmt = $dbh->prepare("SELECT * FROM reason WHERE id = :id;");
 			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);

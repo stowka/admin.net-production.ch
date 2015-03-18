@@ -34,7 +34,7 @@
                             <col width="10%"/>
                         </colgroup>
 
-                        <caption><?=$item->getLabel()?></caption>
+                        <caption><?=utf8_encode($item->getLabel())?></caption>
                         
                         <thead>
                             <tr>
@@ -48,8 +48,8 @@
                         <tbody>
                         <?php foreach($projects[$item->getId()] as $project):?>
                             <tr>
-                                <td><?=$project->getTitle()?></td>
-                                <td><?=$project->getDescription()?></td>
+                                <td><?=utf8_encode($project->getTitle())?></td>
+                                <td><?=utf8_encode($project->getDescription())?></td>
                                 <?php if($project->isPublic()):?>
                                     <td><input type="checkbox" checked/></td>
                                 <?php else: ?>
