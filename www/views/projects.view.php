@@ -8,6 +8,7 @@
 <!doctype html>
 <html lang="en_UK">
 	<?php includeSection('head') ?>
+    <script type="text/javascript" src="global/js/ajax-change-public-private.js"></script>
 
 	<body>
 		<div id="wrapper">
@@ -51,9 +52,9 @@
                                 <td><?=utf8_encode($project->getTitle())?></td>
                                 <td><?=utf8_encode($project->getDescription())?></td>
                                 <?php if($project->isPublic()):?>
-                                    <td><input type="checkbox" checked/></td>
+                                <td><input type="checkbox" value="<?=$project->getId()?>" checked/></td>
                                 <?php else: ?>
-                                    <td><input type="checkbox"/></td>
+                                    <td><input type="checkbox" value="<?=$project->getId()?>"/></td>
                                 <?php endif ?>
                                 <td><button class="btn btn-danger" type="button">&times;</button></td>
                             </tr>

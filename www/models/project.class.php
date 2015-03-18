@@ -70,6 +70,18 @@
                 echo "Error : check fields title or description or language.";
         }
 
+        public static function switch_public_private($id, $bool) {
+            $dbh = SPDO::getInstance();
+            $bool === "true" ? 
+                $stmt = $dbh->prepare("UPDATE project SET public = 1 WHERE id =
+                :id;") :
+                $stmt = $dbh->prepare("UPDATE project SET public = 0 WHERE id =
+                :id;");
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $stmt->closeCursor();
+        }
+
         public function delete() {
             $dbh = SPDO::getInstance();
             $stmt = $dbh->prepare("DELETE FROM project WHERE id = :id;");
