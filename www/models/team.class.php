@@ -9,12 +9,14 @@
 		private $id;
 		private $name;
 		private $biography;
+		private $position;
 		private $language;
 
 		function __construct(){
 			$this->id = 0;
 			$this->name = "";
 			$this->biography = "";
+			$this->position = "";
 			$this->language = "";
 		}
 
@@ -29,6 +31,7 @@
 			$stmt->closeCursor();
 			$instance->setName($row['name']);
 			$instance->setBiography($row['biography']);
+			$instance->setPosition($row['position']);
 			$instance->setLanguage(Language::initWithId($row['language']));
 			return $instance;
 		}
@@ -37,25 +40,27 @@
 			$instance = new self();
 			$instance->setName($name);
 			$instance->setBiography($biography);
+			$instance->setPosition($position);
 			$instance->setLanguage($language);
 			return $instance;
 		}
 
 		public function store() {
 			if (!empty($this->name) && !empty($this->biography) 
-				&& !empty($this->language)) {
+				&& !empty($this->language) && !empty($this->position)) {
 				$dbh = SPDO::getInstance();
-				$stmt = $dbh->prepare("INSERT INTO team(name, biography, language)
-					VALUES (:name, :biography, :language);");
+				$stmt = $dbh->prepare("INSERT INTO team(name, biography, position, language)
+					VALUES (:name, :biography, :position, :language);");
 				$stmt->bindParam(":name", $this->name, PDO::PARAM_STR);
 				$stmt->bindParam(":biography", $this->biography, PDO::PARAM_STR);
+				$stmt->bindParam(":position", $this->position, PDO::PARAM_STR);
 				$stmt->bindParam(":language", $this->language, PDO::PARAM_STR);
 				$stmt->execute();
 				$this->id = $dbh->lastInsertId();
 				$stmt->closeCursor();
 			}
 			else
-				echo "Error : Incorrect name, biography or language.";
+				echo "Error : Incorrect name, biography, position or language.";
 		}
 
 		public function delete() {
@@ -102,6 +107,10 @@
 			return $this->biography;
 		}
 
+		function getPosition() {
+			return $this->position;
+		}
+
 		function getLanguage() {
 			return $this->language;
 		}
@@ -120,6 +129,10 @@
 
 		function setBiography($biography) {
 			$this->biography = $biography;
+		}
+
+		function setPosition($position) {
+			$this->position = $position;
 		}
 
 		function setLanguage($language) {

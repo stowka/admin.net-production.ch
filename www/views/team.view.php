@@ -41,6 +41,7 @@
 											<h2 class="text-center">
 												<?php echo utf8_encode($member->getName());?>
 											</h2>
+											<input type="text" class="form-control" placeholder="Position" value="<?php echo utf8_encode($member->getPosition());?>"/><br>
 											<textarea rows="6" name="description" class="form-control"><?php echo utf8_encode($member->getBiography());?></textarea>
 										</div>
 									<?php } ?>
