@@ -37,12 +37,12 @@
 							<form id="form-<?php echo $lang[0]->getLanguage()->getId();?>" method="POST" action="./">
 								<div class="row" id="<?php echo $lang[0]->getLanguage()->getId();?>">
 									<?php foreach ($lang as $member) { ?>
-										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 											<h2 class="text-center">
 												<?php echo utf8_encode($member->getName());?>
 											</h2>
 											<input type="text" class="form-control" placeholder="Position" value="<?php echo utf8_encode($member->getPosition());?>"/><br>
-											<textarea rows="6" name="description" class="form-control"><?php echo utf8_encode($member->getBiography());?></textarea>
+											<textarea rows="8" name="description" class="form-control"><?php echo utf8_encode($member->getBiography());?></textarea>
 										</div>
 									<?php } ?>
 								</div>
