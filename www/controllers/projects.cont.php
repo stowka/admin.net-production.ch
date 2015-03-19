@@ -14,4 +14,6 @@
         $projects[$item->getId()] = $tmp;
     }
 
+    $languages = Language::getAll();
+
 	require_once "views/projects.view.php";

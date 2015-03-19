@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('button').click(deleteProject);
+    $('button.delete').click(deleteProject);
 });
 
 var deleteProject = function() {
