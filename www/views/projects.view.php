@@ -9,6 +9,7 @@
 <html lang="en_UK">
 	<?php includeSection('head') ?>
     <script type="text/javascript" src="global/js/ajax-change-public-private.js"></script>
+    <script type="text/javascript" src="global/js/ajax-delete-project.js"></script>    
 
 	<body>
 		<div id="wrapper">
@@ -48,15 +49,15 @@
 
                         <tbody>
                         <?php foreach($projects[$item->getId()] as $project):?>
-                            <tr>
+                            <tr id="<?=$project->getId()?>">
                                 <td><?=utf8_encode($project->getTitle())?></td>
                                 <td><?=utf8_encode($project->getDescription())?></td>
                                 <?php if($project->isPublic()):?>
-                                <td><input type="checkbox" value="<?=$project->getId()?>" checked/></td>
+                                    <td><input type="checkbox" value="<?=$project->getId()?>" checked/></td>
                                 <?php else: ?>
                                     <td><input type="checkbox" value="<?=$project->getId()?>"/></td>
                                 <?php endif ?>
-                                <td><button class="btn btn-danger" type="button">&times;</button></td>
+                                <td><button class="btn btn-danger" type="button" value="<?=$project->getId()?>">&times;</button></td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>
