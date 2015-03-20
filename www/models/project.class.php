@@ -10,6 +10,7 @@
         private $title;
         private $description;
         private $public;
+        private $url;
         private $type;
         private $language;
 
@@ -18,6 +19,7 @@
             $this->title = "";
             $this->description = "";
             $this->public = False;
+            $this->url = "";
             $this->type = 0;
             $this->language = "";
         }
@@ -34,12 +36,13 @@
             $instance->setTitle($row['title']);
             $instance->setDescription($row['description']);
             $instance->setPublic($row['public']);
+            $instance->setUrl($row['url']);
             $instance->setType($row['type']);
             $instance->setLanguage($row['language']);
             return $instance;
         }
 
-        public static function initWithData($title, $description, $public,
+        public static function initWithData($title, $description, $public, $url,
             $type, $language) {
 
             $instance = new self();
@@ -47,6 +50,7 @@
             $instance->setDescription($description);
             $public = $public ? 1 : 0;
             $instance->setPublic($public);
+            $instance->setUrl($url);
             $instance->setType($type);
             $instance->setLanguage($language);
             return $instance;
@@ -57,11 +61,12 @@
                 !empty($this->language)) {
                 $dbh = SPDO::getInstance();
                 $stmt = $dbh->prepare("INSERT INTO project(title, description,
-                    public, type, language) VALUES(:title, :description,
-                    :public, :type, :language);");
+                    public, url, type, language) VALUES(:title, :description,
+                    :public, :url, :type, :language);");
                 $stmt->bindParam(":title", $this->title, PDO::PARAM_STR);
                 $stmt->bindParam(":description", $this->description, PDO::PARAM_STR);
                 $stmt->bindParam(":public", $this->public, PDO::PARAM_INT);
+                $stmt->bindParam(":url", $this->url, PDO::PARAM_INT);
                 $stmt->bindParam(":type", $this->type, PDO::PARAM_INT);
                 $stmt->bindParam(":language", $this->language, PDO::PARAM_STR);
                 $stmt->execute();
@@ -154,6 +159,10 @@
             return $this->language;
         }
 
+        public function getUrl() {
+            return $this->url;
+        }
+
         /*
          * Setters
          */
@@ -180,6 +189,10 @@
 
         public function setLanguage($language) {
             $this->language = $language;
+        }
+
+        public function setUrl($url) {
+            $this->url = $url;
         }
 
     }

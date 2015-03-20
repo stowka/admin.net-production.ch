@@ -13,7 +13,8 @@
        $project = Project::initWithData(
         $_POST['title'],   
         $_POST['description'],   
-        $_POST['is_public'],   
+        $_POST['is_public'],
+        $_POST['url'],  
         $_POST['type'],   
         $_POST['language']);  
 
