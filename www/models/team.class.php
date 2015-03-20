@@ -36,7 +36,7 @@
 			return $instance;
 		}
 
-		public static function initWithData($name, $biography, $language) {
+		public static function initWithData($name, $biography, $position, $language) {
 			$instance = new self();
 			$instance->setName($name);
 			$instance->setBiography($biography);
@@ -58,6 +58,7 @@
 				$stmt->execute();
 				$this->id = $dbh->lastInsertId();
 				$stmt->closeCursor();
+				return ($this->id > 0) ? true : false;
 			}
 			else
 				echo "Error : Incorrect name, biography, position or language.";
