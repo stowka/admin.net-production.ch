@@ -5,6 +5,8 @@
 	 * @copyright Net-Production
 	 */
 
+    require_once "language.class.php";
+
 	class Commitment {
 		private $id;
 		private $title;
@@ -41,6 +43,18 @@
 			return $instance;
 		}
 
+        public static function initWithTitleAndLanguage($title, $language) {
+            $dbh = SPDO::getInstance();
+            $stmt = $dbh->prepare("SELECT id FROM commitment WHERE title = :title and language = :language;");
+            $stmt->bindParam(":title", $title, PDO::PARAM_STR);
+            $stmt->bindParam(":language", $language, PDO::PARAM_STR);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $instance = COMMITMENT::initWithId($row['id']);
+            $stmt->closeCursor();
+            return $instance;
+        }
+
 		public function store() {
 			if (!empty($this->title) && !empty($this->description) 
 				&& !empty($this->language)) {
@@ -57,6 +71,16 @@
 			else
 				echo "Error : Incorrect title, description or language.";
 		}
+
+        public function updateDescription($desc) {
+            $dbh = SPDO::getInstance();
+            $stmt = $dbh->prepare("UPDATE commitment SET description = :desc WHERE id = :id;");
+            $stmt->bindParam(":id", $this->id, PDO::PARAM_INT);
+            $stmt->bindParam(":desc", $desc, PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->closeCursor();
+            $this->description = $desc;
+        }
 
 		public function delete() {
 			$dbh = SPDO::getInstance();
@@ -90,7 +114,7 @@
 		 * Getters
 		 */
 
-		function getId() {
+		public function getId() {
 			return $this->id;
 		}
 
@@ -98,11 +122,11 @@
 			return $this->title;
 		}
 
-		function getDescription() {
+		public function getDescription() {
 			return $this->description;
 		}
 
-		function getLanguage() {
+		public function getLanguage() {
 			return $this->language;
 		}
 
@@ -110,19 +134,19 @@
 		 * Setters
 		 */
 
-		function setId($id) {
+		public function setId($id) {
 			$this->id = $id;
 		}
 
-		function setTitle($title) {
+		public function setTitle($title) {
 			$this->title = $title;
 		}
 
-		function setDescription($description) {
+		public function setDescription($description) {
 			$this->description = $description;
 		}
 
-		function setLanguage($language) {
+		public function setLanguage($language) {
 			$this->language = $language;
 		}
 	}

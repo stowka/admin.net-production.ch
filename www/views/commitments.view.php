@@ -65,17 +65,18 @@
 								<?php echo utf8_encode($commitment->getTitle()); ?>
 							</h2>
 
-							<textarea rows="6" name="description" class="form-control"><?php echo utf8_encode($commitment->getDescription()); ?></textarea>
+                            <textarea id="<?php echo $commitment->getTitle()."-".$commitment->getLanguage()->getId()?>" rows="6" name="description" class="form-control"><?php echo utf8_encode($commitment->getDescription()); ?></textarea>
 							<?php $text = str_replace("\n","</li>",str_replace("-", "<li>", $commitment->getDescription())); ?>
 						</div>
 					<?php }	?>
 					</div>
 					<hr>
-					<button type="submit" class="btn btn-info text-center">Save</button>
+					<button type="button" class="btn btn-info text-center">Save</button>
 				</form>
 				<?php }	?>
 			</div>
 		</div>
 		<?php includeSection('commitments-js');?>
+        <script type="text/javascript" src="global/js/ajax-modify-commitments.js"></script>
 	</body>
 </html>
