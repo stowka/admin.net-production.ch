@@ -6,12 +6,20 @@
 	displayAuthor();
 
     $types = Type::getAll();
+    $typesFr = Type::getAllByLanguage("fr_CH");
+    $typesEn = Type::getAllByLanguage("en_UK");
 
-    $projects = [];
+    $projectsFr = [];
+    $projectsEn = [];
 
-    foreach($types as $item) {
-        $tmp = Project::getAllByTypeAndLanguage($item->getId(), "fr_CH");
-        $projects[$item->getId()] = $tmp;
+    foreach($typesFr as $type) {
+        $tmp = Project::getAllByTypeAndLanguage($type->getId(), "fr_CH");
+        $projectsFr[$type->getId()] = $tmp;
+    }
+
+    foreach($typesEn as $type) {
+        $tmp = Project::getAllByTypeAndLanguage($type->getId(), "en_UK");
+        $projectsEn[$type->getId()] = $tmp;
     }
 
     $languages = Language::getAll();

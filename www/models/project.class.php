@@ -45,6 +45,7 @@
             $instance = new self();
             $instance->setTitle($title);
             $instance->setDescription($description);
+            $public = $public ? 1 : 0;
             $instance->setPublic($public);
             $instance->setType($type);
             $instance->setLanguage($language);
@@ -60,14 +61,15 @@
                     :public, :type, :language);");
                 $stmt->bindParam(":title", $this->title, PDO::PARAM_STR);
                 $stmt->bindParam(":description", $this->description, PDO::PARAM_STR);
-                $stmt->bindParam(":public", $this->public, PDO::PARAM_BOOL);
+                $stmt->bindParam(":public", $this->public, PDO::PARAM_INT);
                 $stmt->bindParam(":type", $this->type, PDO::PARAM_INT);
                 $stmt->bindParam(":language", $this->language, PDO::PARAM_STR);
                 $stmt->execute();
                 $this->id = $dbh->lastInsertId();
                 $stmt->closeCursor();
+                return ($this->id > 0) ? true : false;
             } else
-                echo "Error : check fields title or description or language.";
+                return false;
         }
 
         public static function switch_public_private($id, $bool) {

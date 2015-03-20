@@ -55,9 +55,22 @@
 			$stmt->closeCursor();
 		}
 
-		public static function getAll() {
+        public static function getAll() {
+            $dbh = SPDO::getInstance();
+            $stmt = $dbh->prepare("SELECT id FROM type;");
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $types = array();
+            foreach ($rows as $row) {
+                $types[] = Type::initWithId($row['id']);
+            }
+            return $types;
+        }
+
+		public static function getAllByLanguage($lang) {
 			$dbh = SPDO::getInstance();
-			$stmt = $dbh->prepare("SELECT id FROM type;");
+			$stmt = $dbh->prepare("SELECT id FROM type WHERE language = :lang;");
+            $stmt->bindParam(":lang", $lang, PDO::PARAM_STR);
 			$stmt->execute();
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$stmt->closeCursor();
