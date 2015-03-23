@@ -63,12 +63,12 @@
                 $stmt = $dbh->prepare("INSERT INTO project(title, description,
                     public, url, type, language) VALUES(:title, :description,
                     :public, :url, :type, :language);");
-                $stmt->bindParam(":title", $this->title, PDO::PARAM_STR);
-                $stmt->bindParam(":description", $this->description, PDO::PARAM_STR);
+                $stmt->bindParam(":title", utf8_encode($this->title), PDO::PARAM_STR);
+                $stmt->bindParam(":description", utf8_encode($this->description), PDO::PARAM_STR);
                 $stmt->bindParam(":public", $this->public, PDO::PARAM_INT);
                 $stmt->bindParam(":url", $this->url, PDO::PARAM_INT);
                 $stmt->bindParam(":type", $this->type, PDO::PARAM_INT);
-                $stmt->bindParam(":language", $this->language, PDO::PARAM_STR);
+                $stmt->bindParam(":language", utf8_encode($this->language), PDO::PARAM_STR);
                 $stmt->execute();
                 $this->id = $dbh->lastInsertId();
                 $stmt->closeCursor();
