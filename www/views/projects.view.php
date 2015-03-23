@@ -146,7 +146,7 @@
                             <col width="10%"/>
                         </colgroup>
 
-                        <caption><?=utf8_encode($item->getLabel())?></caption>
+                        <caption><?=$item->getLabel()?></caption>
                         
                         <thead>
                             <tr>
@@ -160,8 +160,8 @@
                         <tbody>
                         <?php foreach($projectsFr[$item->getId()] as $project):?>
                             <tr id="<?=$project->getId()?>">
-                                <td><?=utf8_encode($project->getTitle())?></td>
-                                <td><?=utf8_encode($project->getDescription())?></td>
+                                <td><?=$project->getTitle()?></td>
+                                <td><?=$project->getDescription()?></td>
                                 <?php if($project->isPublic()):?>
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>" checked/></td>
                                 <?php else: ?>
@@ -197,7 +197,7 @@
                             <col width="10%"/>
                         </colgroup>
 
-                        <caption><?=utf8_encode($item->getLabel())?></caption>
+                        <caption><?=$item->getLabel()?></caption>
                         
                         <thead>
                             <tr>
@@ -211,8 +211,8 @@
                         <tbody>
                         <?php foreach($projectsEn[$item->getId()] as $project):?>
                             <tr id="<?=$project->getId()?>">
-                                <td><?=utf8_encode($project->getTitle())?></td>
-                                <td><?=utf8_encode($project->getDescription())?></td>
+                                <td><?=$project->getTitle()?></td>
+                                <td><?=$project->getDescription()?></td>
                                 <?php if($project->isPublic()):?>
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>" checked/></td>
                                 <?php else: ?>
