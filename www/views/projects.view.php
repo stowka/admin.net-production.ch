@@ -40,12 +40,12 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title">Add new project</h3>
+                                <h3 class="modal-title">Ajouter un nouveau projet</h3>
                             </div>
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="title-field-fr" class="control-label">Title</label>
+                                        <label for="title-field-fr" class="control-label">Titre</label>
                                         <input id="title-field-fr" type="text" class="form-control" />
                                     </div>
                                     <div class="form-group">
@@ -71,8 +71,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button id="add-button-fr" type="button" class="btn btn-success">Add</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                <button id="add-button-fr" type="button" class="btn btn-success">Ajouter</button>
                             </div>
                         </div>
                     </div>
