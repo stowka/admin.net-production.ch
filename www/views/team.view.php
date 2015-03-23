@@ -41,10 +41,10 @@
 									<?php foreach ($lang as $member) { ?>
 										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 											<h2 class="text-center">
-												<?php echo utf8_encode($member->getName());?>
+												<?php echo $member->getName();?>
 											</h2>
-											<input type="text" class="form-control" placeholder="Position" value="<?php echo utf8_encode($member->getPosition());?>"/><br>
-											<textarea rows="8" name="description" class="form-control"><?php echo utf8_encode($member->getBiography());?></textarea>
+											<input type="text" class="form-control" placeholder="Position" value="<?php echo $member->getPosition();?>"/><br>
+											<textarea rows="8" name="description" class="form-control"><?php echo $member->getBiography();?></textarea>
 										</div>
 									<?php } ?>
 								</div>
