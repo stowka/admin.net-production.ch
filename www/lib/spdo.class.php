@@ -22,7 +22,8 @@
 				'mysql:dbname='.self::DEFAULT_SQL_DATABASE.
 				';host='.self::DEFAULT_SQL_HOST,
 				self::DEFAULT_SQL_USER,
-				self::DEFAULT_SQL_PASSWORD);
+				self::DEFAULT_SQL_PASSWORD, 
+				Array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		}
 
 		public static function getInstance() {
