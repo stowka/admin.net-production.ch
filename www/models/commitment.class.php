@@ -106,7 +106,7 @@
 		public static function deleteAll() {
 			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("DELETE FROM commitment;");
-			$stmt->execute();models/project.class.php
+			$stmt->execute();
 			$stmt->closeCursor();
 		}
 
