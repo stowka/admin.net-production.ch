@@ -48,7 +48,7 @@
             $instance = new self();
             $instance->setTitle($title);
             $instance->setDescription($description);
-            $public = $public ? 1 : 0;
+            $public = $public === "true" ? 1 : 0;
             $instance->setPublic($public);
             $instance->setUrl($url);
             $instance->setType($type);
