@@ -18,7 +18,6 @@
         $_POST['type'],   
         $_POST['language']);  
 
-        
         $result = $project->store();
 
         echo $result;
