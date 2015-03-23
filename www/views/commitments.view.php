@@ -62,10 +62,10 @@
 					<?php foreach ($lang as $commitment) { ?>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 							<h2 class="text-center">
-								<?php echo utf8_encode($commitment->getTitle()); ?>
+								<?php echo $commitment->getTitle(); ?>
 							</h2>
 
-                            <textarea id="<?php echo $commitment->getTitle()."-".$commitment->getLanguage()->getId()?>" rows="6" name="description" class="form-control"><?php echo utf8_encode($commitment->getDescription()); ?></textarea>
+                            <textarea id="<?php echo $commitment->getTitle()."-".$commitment->getLanguage()->getId()?>" rows="6" name="description" class="form-control"><?php echo $commitment->getDescription(); ?></textarea>
 							<?php $text = str_replace("\n","</li>",str_replace("-", "<li>", $commitment->getDescription())); ?>
 						</div>
 					<?php }	?>
