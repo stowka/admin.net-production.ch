@@ -61,8 +61,8 @@
 				$dbh = SPDO::getInstance();
 				$stmt = $dbh->prepare("INSERT INTO commitment(title, description, language)
 					VALUES (:title, :description, :language);");
-				$stmt->bindParam(":title", $this->title, PDO::PARAM_STR);
-				$stmt->bindParam(":description", $this->description, PDO::PARAM_STR);
+				$stmt->bindParam(":title", utf8_encode($this->title), PDO::PARAM_STR);
+				$stmt->bindParam(":description", utf8_encode($this->description), PDO::PARAM_STR);
 				$stmt->bindParam(":language", $this->language, PDO::PARAM_STR);
 				$stmt->execute();
 				$this->id = $dbh->lastInsertId();
@@ -76,7 +76,7 @@
             $dbh = SPDO::getInstance();
             $stmt = $dbh->prepare("UPDATE commitment SET description = :desc WHERE id = :id;");
             $stmt->bindParam(":id", $this->id, PDO::PARAM_INT);
-            $stmt->bindParam(":desc", $desc, PDO::PARAM_STR);
+            $stmt->bindParam(":desc", utf8_encode($desc), PDO::PARAM_STR);
             $stmt->execute();
             $stmt->closeCursor();
             $this->description = $desc;
@@ -106,7 +106,7 @@
 		public static function deleteAll() {
 			$dbh = SPDO::getInstance();
 			$stmt = $dbh->prepare("DELETE FROM commitment;");
-			$stmt->execute();
+			$stmt->execute();models/project.class.php
 			$stmt->closeCursor();
 		}
 
