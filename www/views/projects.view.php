@@ -11,6 +11,7 @@
     <script type="text/javascript" src="global/js/ajax-change-public-private.js"></script>
     <script type="text/javascript" src="global/js/ajax-delete-project.js"></script>  
     <script type="text/javascript" src="global/js/ajax-add-project.js"></script>  
+    <script type="text/javascript" src="global/js/ajax-upload-picture-project.js"></script>
 
 	<body>
 		<div id="wrapper">
@@ -140,9 +141,10 @@
                <div class="table-responsive">
                     <table class="table table-bordered">
                         <colgroup>
-                            <col width="20%"/>
+                            <col width="15%"/>
                             <col width="50%"/>
-                            <col width="20%"/>
+                            <col width="15%"/>
+                            <col width="10%"/>
                             <col width="10%"/>
                         </colgroup>
 
@@ -153,6 +155,7 @@
                                 <th>Titre</th>
                                 <th>Description</th>
                                 <th>Public ?</th>
+                                <th>Image</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -167,6 +170,7 @@
                                 <?php else: ?>
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>"/></td>
                                 <?php endif ?>
+                                <td></td>
                                 <td><button class="btn btn-danger delete" type="button" value="<?=$project->getId()?>">&times;</button></td>
                             </tr>
                         <?php endforeach;?>
@@ -191,9 +195,10 @@
                <div class="table-responsive">
                     <table class="table table-bordered">
                         <colgroup>
-                            <col width="20%"/>
+                            <col width="15%"/>
                             <col width="50%"/>
-                            <col width="20%"/>
+                            <col width="15%"/>
+                            <col width="10%"/>
                             <col width="10%"/>
                         </colgroup>
 
@@ -204,6 +209,7 @@
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Public ?</th>
+                                <th>Picture</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -217,7 +223,16 @@
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>" checked/></td>
                                 <?php else: ?>
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>"/></td>
-                                <?php endif ?>
+                                <?php endif; ?>
+                                
+                                <?php if(empty($project->getPicture())): ?>
+                                    <td>
+                                        <input id="file-select-en-<?=$project->getId()?>" type="file"/>
+                                        <button class="upload-button" value="<?=$project->getId()?>">Upload!</button>
+                                    </td>
+                                <?php else: ?>
+                                    <td></td>
+                                <?php endif; ?>
                                 <td><button class="btn btn-danger delete" type="button" value="<?=$project->getId()?>">&times;</button></td>
                             </tr>
                         <?php endforeach;?>
@@ -255,6 +270,5 @@
                 $("#link-fr_CH").addClass('active');
             });
         </script>
-        
 	</body>
 </html>
