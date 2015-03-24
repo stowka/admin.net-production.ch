@@ -225,7 +225,6 @@
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>"/></td>
                                 <?php endif; ?>
                                 
-                                // Doesn't work without var
                                 <?php $picture = $project->getPicture(); ?>
                                 <?php if(empty($picture)): ?>
                                     <td>
