@@ -9,9 +9,13 @@
         $project->update_picture("");
 
         $target_dir = "../global/img/uploads/projects/";
+        $target_dir_site = "../../../../netprod-beta/net-production.ch/www/global/img/screenshots/";
         $name = $_POST['id'] . ".png";
 
-        unlink($target_dir . $name);
+        if(file_exists($target_dir . $name))
+            unlink($target_dir . $name);
+        if(file_exists($target_dir_site . $name))
+            unlink($target_dir . $site);
 
         echo "picture deleted";
     }
