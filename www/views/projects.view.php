@@ -12,6 +12,7 @@
     <script type="text/javascript" src="global/js/ajax-delete-project.js"></script>  
     <script type="text/javascript" src="global/js/ajax-add-project.js"></script>  
     <script type="text/javascript" src="global/js/ajax-upload-picture-project.js"></script>
+    <script type="text/javascript" src="global/js/ajax-remove-picture-project.js"></script>
 
 	<body>
 		<div id="wrapper">
@@ -177,7 +178,10 @@
                                         <button class="upload-button" value="<?=$project->getId()?>">Upload!</button>
                                     </td>
                                 <?php else: ?>
-                                    <td><img width="50px" src="global/img/uploads/projects/<?=$project->getId()?>.png"/></td>
+                                    <td>
+                                        <img width="50px" src="global/img/uploads/projects/<?=$project->getId()?>.png"/>
+                                        <button class="btn glyphicon glyphicon-remove delete-button" value="<?=$project->getId()?>"></button>
+                                    </td>
                                 <?php endif; ?>
 
                                 <td><button class="btn btn-danger delete" type="button" value="<?=$project->getId()?>">&times;</button></td>
@@ -241,7 +245,10 @@
                                         <button class="upload-button" value="<?=$project->getId()?>">Upload!</button>
                                     </td>
                                 <?php else: ?>
-                                    <td><img width="50px" src="global/img/uploads/projects/<?=$project->getId()?>.png"/></td>
+                                    <td>
+                                        <img width="50px" src="global/img/uploads/projects/<?=$project->getId()?>.png"/>
+                                        <button class="btn glyphicon glyphicon-remove delete-button" value="<?=$project->getId()?>"></button>
+                                    </td>
                                 <?php endif; ?>
                                 <td><button class="btn btn-danger delete" type="button" value="<?=$project->getId()?>">&times;</button></td>
                             </tr>
