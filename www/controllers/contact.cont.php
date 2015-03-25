@@ -4,4 +4,5 @@
 	 * @author Antoine De Gieter
 	 */
 	displayAuthor();
+	includeController('partner');
 	includeView('contact');

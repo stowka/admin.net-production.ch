@@ -234,7 +234,8 @@
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>"/></td>
                                 <?php endif; ?>
                                 
-                                <?php if(empty($project->getPicture())): ?>
+                                <?php $picture = $project->getPicture(); ?>
+                                <?php if(empty($picture)): ?>
                                     <td>
                                         <input id="file-select-<?=$project->getId()?>" type="file"/>
                                         <button class="upload-button" value="<?=$project->getId()?>">Upload!</button>
