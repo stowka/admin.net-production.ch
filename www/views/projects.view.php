@@ -170,7 +170,16 @@
                                 <?php else: ?>
                                     <td><input class="update" type="checkbox" value="<?=$project->getId()?>"/></td>
                                 <?php endif ?>
-                                <td></td>
+                                
+                                <?php if(empty($project->getPicture())): ?>
+                                    <td>
+                                        <input id="file-select-<?=$project->getId()?>" type="file"/>
+                                        <button class="upload-button" value="<?=$project->getId()?>">Upload!</button>
+                                    </td>
+                                <?php else: ?>
+                                    <td><img width="50px" src="global/img/uploads/projects/<?=$project->getId()?>.png"/></td>
+                                <?php endif; ?>
+
                                 <td><button class="btn btn-danger delete" type="button" value="<?=$project->getId()?>">&times;</button></td>
                             </tr>
                         <?php endforeach;?>
@@ -227,11 +236,11 @@
                                 
                                 <?php if(empty($project->getPicture())): ?>
                                     <td>
-                                        <input id="file-select-en-<?=$project->getId()?>" type="file"/>
+                                        <input id="file-select-<?=$project->getId()?>" type="file"/>
                                         <button class="upload-button" value="<?=$project->getId()?>">Upload!</button>
                                     </td>
                                 <?php else: ?>
-                                    <td></td>
+                                    <td><img width="50px" src="global/img/uploads/projects/<?=$project->getId()?>.png"/></td>
                                 <?php endif; ?>
                                 <td><button class="btn btn-danger delete" type="button" value="<?=$project->getId()?>">&times;</button></td>
                             </tr>

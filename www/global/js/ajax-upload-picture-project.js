@@ -6,9 +6,9 @@ $(document).ready(function() {
 
 
 var uploadPicture = function(event) {
-    var selector = "#file-select-en-" + event.data.id;
+    var selector = "#file-select-" + event.data.id;
     var fileSelect = $(selector);
-    var uploadButton = $('#upload-button-en');
+    var uploadButton = $('#upload-button');
 
     var file = fileSelect[0].files;
 
@@ -24,7 +24,9 @@ var uploadPicture = function(event) {
             processData : false,
             contentType : false,
             success     : function(answer) {
-                alert(answer);
+                if(answer === "The file has been uploaded !") {
+                    location.reload(true);
+                }
             }
         });
 
