@@ -2,20 +2,18 @@
     
     require_once "../lib/spdo.class.php";
     require_once "../models/project.class.php";
+    require_once "../config/config.inc.php";
 
     if(isset($_POST['id'])) {
 
         $project = Project::initWithId($_POST['id']);
         $project->update_picture("");
-
-        $target_dir = "../global/img/uploads/projects/";
-        $target_dir_site = "../../../../netprod-beta/net-production.ch/www/global/img/screenshots/";
         $name = $_POST['id'] . ".png";
 
-        if(file_exists($target_dir . $name))
-            unlink($target_dir . $name);
-        if(file_exists($target_dir_site . $name))
-            unlink($target_dir . $site);
+        if(file_exists(UPLOAD_PATH_ADMIN . $name))
+            unlink(UPLOAD_PATH_ADMIN . $name);
+        if(file_exists(UPLOAD_PATH_SITE . $name))
+            unlink(UPLOAD_PATH_SIZE . $name);
 
         echo "picture deleted";
     }

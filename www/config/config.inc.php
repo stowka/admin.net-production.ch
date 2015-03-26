@@ -34,6 +34,9 @@
 	define('DEFAULT_VIEW_EXTENSION', '.view.php');
 	define('DEFAULT_SECTION_EXTENSION', '.sec.php');
 
+    define('UPLOAD_PATH_ADMIN', '../global/img/uploads/projects/');
+    define('UPLOAD_PATH_SITE', '../../../../netprod_beta/net-production.ch/www/global/img/screenshots/');
+
 	# Languages
 	$authorized_languages = array(
 		'en_UK',
