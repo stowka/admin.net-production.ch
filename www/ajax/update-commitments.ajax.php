@@ -24,4 +24,7 @@
         $com2->updateDescription($_POST['tools']);
         $com3->updateDescription($_POST['assistance']);
         $com4->updateDescription($_POST['time']);
+
+        $res = [ 'language' => $lang ];
+        echo json_encode($res);
     }
