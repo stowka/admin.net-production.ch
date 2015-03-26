@@ -14,12 +14,14 @@
 			<?php includeSection('sidebar'); ?>
 
 			<div id="page-content-wrapper">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<h1>
 								Team
 							</h1>
+
+                            <!-- Language tabs -->
 							<ul class="nav nav-tabs">
 								<li role="presentation" class="active" id="link-fr_CH">
 									<a href="#">
@@ -33,31 +35,35 @@
 									</a>
 								</li>
 							</ul>
-							<br>
-							<?php foreach ($team as $lang) { ?>
-							<form id="form-<?php echo $lang[0]->getLanguage()->getId();?>" method="POST" action="./">
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTeamModal-<?php echo $lang[0]->getLanguage()->getId();?>">&plus;</button>
-								<div class="row" id="<?php echo $lang[0]->getLanguage()->getId();?>">
-									<?php foreach ($lang as $member) { ?>
-										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-											<h2 class="text-center">
-												<?php echo $member->getName();?>
-											</h2>
-											<input type="text" class="form-control" placeholder="Position" value="<?php echo $member->getPosition();?>"/><br>
-											<textarea rows="8" name="description" class="form-control"><?php echo $member->getBiography();?></textarea>
-										</div>
-									<?php } ?>
-								</div>
-								<hr>
-								<button type="submit" class="btn btn-info text-center">Save</button>
-							</form>
-						<?php }	?>
+
+                            <br>
+
+                            <!-- Main content -->
+							<?php foreach ($team as $lang): ?>
+                                <form id="form-<?php echo $lang[0]->getLanguage()->getId();?>">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTeamModal-<?php echo $lang[0]->getLanguage()->getId();?>">&plus;</button>
+                                    <div class="row" id="<?php echo $lang[0]->getLanguage()->getId();?>">
+                                        <?php foreach ($lang as $member): ?>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                                <h2 class="text-center">
+                                                    <?php echo $member->getName();?>
+                                                </h2>
+                                                <input type="text" class="form-control" placeholder="Position" value="<?php echo $member->getPosition();?>"/><br>
+                                                <textarea rows="8" name="description" class="form-control"><?php echo $member->getBiography();?></textarea>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <hr>
+                                    <button type="submit" class="btn btn-info text-center">Save</button>
+                                </form>
+                            <?php endforeach; ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+        <!-- Modal to add new member fr_CH -->
 		<div class="modal fade" id="addTeamModal-fr_CH" tabindex="-1" role="dialog" aria-labelledby="Modal form to add project" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -90,6 +96,8 @@
             </div>
         </div>
 
+
+        <!-- Modal to add new member en_UK -->
         <div class="modal fade" id="addTeamModal-en_UK" tabindex="-1" role="dialog" aria-labelledby="Modal form to add project" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -122,6 +130,6 @@
             </div>
         </div>
 
-		<?php includeSection('commitments-js');?>
+		<?php includeSection('commitments-js');?> 
 	</body>
 </html>

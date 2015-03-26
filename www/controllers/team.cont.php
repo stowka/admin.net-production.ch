@@ -1,13 +1,15 @@
 <?php
-	/**
-	 * Default home front controller
-	 * @author Antoine De Gieter
-	 */
-	displayAuthor();
+/**
+    * Default home front controller
+    * @author Antoine De Gieter
+    */
 
-	$team = Array();
+    displayAuthor();
 
-	$team['fr_CH'] = Team::getAll('fr_CH');
+
+    $team = Array();
+
+    $team['fr_CH'] = Team::getAll('fr_CH');
 	$team['en_UK'] = Team::getAll('en_UK');
 
 	require_once "views/team.view.php";
