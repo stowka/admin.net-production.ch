@@ -20,5 +20,5 @@
 
         $result = $project->store();
 
-        echo $result;
+        echo json_encode($project->jsonSerialize());
     }

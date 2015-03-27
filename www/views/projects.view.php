@@ -140,7 +140,7 @@
                 <?php foreach ($typesFr as $item):?>
         
                <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table id="type-<?= $item->getId() ?>"class="table table-bordered">
                         <colgroup>
                             <col width="15%"/>
                             <col width="50%"/>

@@ -5,7 +5,7 @@
      * @copyright Net-Production
      */
 
-    class Project {
+    class Project implements JsonSerializable {
         private $id;
         private $title;
         private $description;
@@ -141,6 +141,18 @@
             $stmt = $dbh->prepare("DELETE FROM project;");
             $stmt->execute();
             $stmt->closeCursor();
+        }
+
+        public function jsonSerialize() {
+            return array(
+                "id" => $this->id,
+                "title" => $this->title,
+                "description" => $this->description,
+                "public" => $this->public,
+                "picture" => $this->picture,
+                "url" => $this->url,
+                "type" => $this->type,
+                "language" => $this->language);
         }
 
 
