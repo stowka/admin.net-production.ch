@@ -15,5 +15,6 @@
         if(file_exists(UPLOAD_PATH_SITE . $name))
             unlink(UPLOAD_PATH_SIZE . $name);
 
-        echo "picture deleted";
+        echo json_encode(array(
+            "id" => $_POST['id']));
     }

@@ -23,11 +23,7 @@ var uploadPicture = function(event) {
             data        : formData,
             processData : false,
             contentType : false,
-            success     : function(answer) {
-                if(answer === "The file has been uploaded !") {
-                    location.reload(true);
-                }
-            }
+            success     : onSuccessUploadPicture 
         });
 
         return false; 
@@ -35,4 +31,26 @@ var uploadPicture = function(event) {
     } else {
         alert("Sélectionnez un fichier");
     }
+};
+
+var onSuccessUploadPicture = function(res) {
+   var data = JSON.parse(res);
+   var td_selector = "tr#" + data.id + " td";
+
+   //Empty the td
+   $($(td_selector)[3]).empty();
+
+   //Create image
+   var img = $("<img/>").attr("width", "50px")
+                        .attr("src", "global/img/uploads/projects/" + data.name);
+
+   //Create remove button
+   var remove_button = $("<button></button>")
+                            .addClass("btn glyphicon glyphicon-remove delete-button")
+                            .attr("value", data.id)
+                            .click({ "id" : data.id }, deletePicture);
+
+    //Append to the td 
+    $($(td_selector)[3]).append($(img))
+                        .append($(remove_button));
 };

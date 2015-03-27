@@ -21,10 +21,13 @@
         echo "Error : file has not been uploaded !";
     } else {
         if (move_uploaded_file($picture['tmp_name'], $target_file)) {
-            //copy($target_file, UPLOAD_PATH_SITE . $picture['name'] . ".png");
+            copy($target_file, UPLOAD_PATH_SITE . $picture['name'] . ".png");
             $project = Project::initWithId((int)$picture['name']);
             $project->update_picture($picture['name'] . ".png");
-            echo "The file has been uploaded !";
+            echo json_encode( array(
+                "id" => $picture['name'],
+                "name" => $picture['name'] . ".png"
+            ));
         } else {
             echo "Error : file has not been uploaded !";
         }

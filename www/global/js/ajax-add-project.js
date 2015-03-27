@@ -21,13 +21,13 @@ var addProject = function(event) {
         type     : "POST",
         url      : "ajax/add-project.ajax.php",
         data     : jsonData,
-        success  : onSuccess
+        success  : onSuccessAddProject
     });
 
     return false;
 };
 
-var onSuccess = function(res) {
+var onSuccessAddProject = function(res) {
     $('#addProjectModalFr').modal("hide");
     $('#addProjectModalEn').modal("hide");
     
@@ -39,13 +39,15 @@ var onSuccess = function(res) {
                             .addClass("btn btn-danger delete")
                             .attr("type", "button")
                             .attr("value", data.id)
-                            .text("x");
+                            .text("x")
+                            .click(deleteProject);
 
     //Create the public checkbox
     var check_box = $("<input/>")
                         .addClass("update")
                         .attr("type", "checkbox")
-                        .attr("value", data.id);
+                        .attr("value", data.id)
+                        .change(updateProject);
 
     if(data.public) {
         $(check_box).prop("checked", true);
@@ -60,7 +62,8 @@ var onSuccess = function(res) {
     var upload_button  = $("<button></button>")
                             .addClass("upload_button")
                             .attr("value", data.id)
-                            .text("Upload!");
+                            .text("Upload!")
+                            .click({"id" : data.id}, uploadPicture);
 
     //Create the whole row
     var tr = $("<tr></tr>")
