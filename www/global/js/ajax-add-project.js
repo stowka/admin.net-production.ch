@@ -1,60 +1,27 @@
 $(document).ready(function() {
-    $('button#add-button-fr').click(addProjectFr);
-    $('button#add-button-en').click(addProjectEn);
+    $('button#add-button-fr').click({"language" : "fr_CH"},addProject);
+    $('button#add-button-en').click({"language" : "en_UK"},addProject);
 
 });
 
-var addProjectFr = function() {
+var addProject = function(event) {
+
+    var suffix = (event.data.language === "fr_CH") ? "fr" : "en";
 
     var jsonData = {
-        title       : $('#title-field-fr').val(),
-        description : $('#description-field-fr').val(),
-        is_public   : $('#public-checkbox-fr')[0].checked,
-        url         : $('#url-field-fr').val(),
-        type        : $('#type-select-fr').val(),
-        language    : $('#language-select-fr').val(),
-    }
+        title       : $('#title-field-' + suffix).val(),
+        description : $('#description-field-' + suffix).val(),
+        is_public   : $('#public-checkbox-' + suffix)[0].checked,
+        url         : $('#url-field-' + suffix).val(),
+        type        : $('#type-select-' + suffix).val(),
+        language    : event.data.language
+    };
     
     $.ajax({
         type     : "POST",
         url      : "ajax/add-project.ajax.php",
         data     : jsonData,
-        success  : onSuccess /*function(msg) {
-            if(msg) {
-                $('#addProjectModalFr').modal('hide');
-                location.reload(true);
-            } else {
-                alert("Échec !");
-            }
-        }*/
-    });
-
-    return false;
-};
-
-var addProjectEn = function() {
-
-    var jsonData = {
-        title       : $('#title-field-en').val(),
-        description : $('#description-field-en').val(),
-        is_public   : $('#public-checkbox-en')[0].checked,
-        url         : $('#url-field-en').val(),
-        type        : $('#type-select-en').val(),
-        language    : $('#language-select-en').val(),
-    }
-    
-    $.ajax({
-        type     : "POST",
-        url      : "ajax/add-project.ajax.php",
-        data     : jsonData,
-        success  : onSuccess /*function(msg) {
-            if(msg) {
-                $('#addProjectModalFr').modal('hide');
-                location.reload(true);
-            } else {
-                alert("Échec !");
-            }
-        }*/
+        success  : onSuccess
     });
 
     return false;
