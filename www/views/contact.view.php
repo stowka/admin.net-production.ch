@@ -12,13 +12,15 @@
     <script type="text/javascript" src="global/js/ajax-delete-partner.js"></script>  
 	<body>
 		<div id="wrapper">
-			<?php includeSection('sidebar'); ?>
+			<?php includeSection('menu'); ?>
+            <br>
+            <br>
 
-			<div id="page-content-wrapper">
+			<div id="page-content-wrapper" class="container">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h1>
+							<h1 class="text-center">
 								Partenaires
 							</h1>
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPartnerModal">&plus;</button>

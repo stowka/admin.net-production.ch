@@ -10,9 +10,11 @@
 	<?php includeSection('head'); ?>
 	<body>
 		<div id="wrapper">
-			<?php includeSection('sidebar'); ?>
+			<?php includeSection('menu'); ?>
+            <br>
+            <br>
 
-			<div id="page-content-wrapper">
+			<div id="page-content-wrapper" class="container">
 				<h1 class="text-center">
 					Commitments
 				</h1>

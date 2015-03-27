@@ -16,7 +16,7 @@
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" type="text/css" href="global/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
-	<link href="global/css/simple-sidebar.css" rel="stylesheet">
+	<!-- <link href="global/css/simple-sidebar.css" rel="stylesheet"> -->
 	<link rel="stylesheet" type="text/css" href="global/css/main.css">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
