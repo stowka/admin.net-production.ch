@@ -11,10 +11,12 @@
 
 	<body>
 		<div id="wrapper">
-			<?php includeSection('sidebar'); ?>
+			<?php includeSection('menu'); ?>
+            <br>
+            <br>
 
-			<div id="page-content-wrapper">
-				<h1>
+			<div id="page-content-wrapper" class="container">
+				<h1 class="text-center">
 					Home
 				</h1>
 				<p>

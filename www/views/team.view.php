@@ -11,13 +11,14 @@
     <script type="text/javascript" src="global/js/ajax-add-team.js"></script>  
 	<body>
 		<div id="wrapper">
-			<?php includeSection('sidebar'); ?>
-
-			<div id="page-content-wrapper">
+			<?php includeSection('menu'); ?>
+            <br>
+            <br>
+			<div id="page-content-wrapper" class="container">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h1>
+							<h1 class="text-center">
 								Team
 							</h1>
 
@@ -35,9 +36,7 @@
 									</a>
 								</li>
 							</ul>
-
                             <br>
-
                             <!-- Main content -->
 							<?php foreach ($team as $lang): ?>
                                 <form id="form-<?php echo $lang[0]->getLanguage()->getId();?>">
